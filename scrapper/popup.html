@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>KYO Assistant extension</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <div id="permission-popup" class="hidden">
-        
-      </div>
-      <h1>KYO Assistant extension</h1>
-      <p id="status">email replies</p>
 
-      <div id="ihtml"></div>
+<head>
+  <meta charset="UTF-8">
+  <title>KYO Assistant extension</title>
+  <link rel="stylesheet" type="text/css" href="emails.css">
+</head>
+
+<body>
+  <div class="main_container">
+    <div id="permission-popup" class="hidden">
+
     </div>
-    <script src="./main.js"></script>
-  </body>
-</html>
+    <header>
+      <div class="user_icon"><img src="images/user.svg" alt=""></div>
+      <div><img src="images/kyo_logo_full.svg" alt="" class="kyo_logo"></div>
+      <div class="emails_label">Email inbox</div>
+    </header>
+    <section class="main">
+      <h1>KYO Assistant extension</h1>
+      <p id="status">Email replies</p>
+      <div class="email_infos">
+        <div class="email_sender">
+          <div class="sender_image">img</div>
+          <div class="sender_name">Name</div>
+        </div>
+        <div class="email_date">2023</div>
+      </div>
+      <div id="ihtml" class="email_content" ></div>
+    </section>
 
+  </div>
+  <script src="./main.js"></script>
+</body>
+
+</html>

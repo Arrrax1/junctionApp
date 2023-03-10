@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let message = getEmailContent(); 
         console.log(message);
         status.textContent = message;
+        status.classList.remove("warning_mesg");
       } 
       else {
-        status.textContent = 'This is not an email website.';
+        status.textContent = 'This is not an email website!';
+        status.classList.add("warning_msg");
       }
     });
   });
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           const ihtml = document.getElementById('ihtml');
           ihtml.innerHTML = contentText;
-          const g = document.getElementsByClassName('gs')[0].children[2].getElementsByClassName('ii')[0].innerText;
+          const g = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
           console.log(g);
           ihtml.innerHTML = g;
           /*let prompt = 'give me only the text of the email:\n';
