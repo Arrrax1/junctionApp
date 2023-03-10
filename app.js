@@ -15,16 +15,23 @@ app.get("/", function(req, res){
 });
 
 app.post("/signin", function (req,res) {
-    const email = req.body.signin_email
-    const password = req.body.signin_password
+    const email = req.body.signin_email;
+    const password = req.body.signin_password;
     /*Auth Function*/
+    //on success Redirect to Chat.ejs
+    console.log(email,password)
+    res.render("chat");
 });
 
 app.post("/signup", function (req,res) {
-    const fullname = req.body.signup_fullname
-    const email = req.body.signup_email
-    const password = req.body.signup_password
-    const password2 = req.body.signup_confirm
+    const fullname = req.body.signup_fullname;
+    const email = req.body.signup_email;
+    const password = req.body.signup_password;
+    const password2 = req.body.signup_confirm;
+    /*Sign Up Function*/
+    //on success Redirect to Login
+    console.log(fullname,email,password);
+    res.redirect("/");
 });
 
 app.listen(3032, function() {
