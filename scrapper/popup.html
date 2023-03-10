@@ -20,16 +20,25 @@
     <section class="main">
       <h1>KYO Assistant extension</h1>
       <p id="status">Email replies</p>
-      <div class="email_infos">
-        <div class="email_sender">
-          <div class="sender_image">img</div>
-          <div id="sender_name" class="sender_name">User</div>
+      <div id="email_content_wrapper">
+        <div class="email_infos">
+          <div class="email_sender">
+            <div class="sender_image">img</div>
+            <div id="sender_name" class="sender_name">User</div>
+          </div>
+          <div class="email_date">2023</div>
         </div>
-        <div class="email_date">2023</div>
+        <div id="ihtml" class="email_content" ></div>
+        <div class="divider"></div>
+        <h3>Suggested reply : </h3>
+        <textarea type="text" placeholder="The response will show here once you click Generate" class="response" spellcheck="false"></textarea>
+        <div class="user_response">
+          <h3>Want me to generate another response ?</h3>
+          <input class="response_Btn" type="button" value="Yes">
+          <input class="response_Btn" type="button" value="No">
+        </div>
       </div>
-      <div id="ihtml" class="email_content" ></div>
     </section>
-
   </div>
   <script src="./main.js"></script>
 </body>
