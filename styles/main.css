@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+*{
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+}
+body{
+    background-color: #fff;
+    width: 750px;
+    height: 520px;
+}
+
+.tab_radio{
+    display: none;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 13px 30px 5px 30px;
+}
+
+#welcome_description{
+    font-weight:500;
+    color: #8992A1;
+}
+
+.main{
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.nav_tabs{
+    display: flex;
+    width: 250px;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.tab_item{
+    display: flex;
+    width: 100%;
+    color: #8992A1;
+    padding: 5px 10px;
+    border-bottom:1px solid silver;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slider{
+    position: absolute;
+    width: 125px;
+    height: 33px;
+    border-bottom:3px solid #FE0050;
+    transition: all 0.3s ease;
+}
+
+#signUp:checked ~ nav .slider{
+    margin-left: 125px;
+}
+#signIn:checked ~ nav #SignInLabel,
+#signUp:checked ~ nav #SignUpLabel{
+    color: #FE0050;
+}
+
+.content{
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.signInContent,.signUpContent{
+    display: none;
+    width: 80% ;
+}
+
+#signIn:checked ~ .content .signInContent,
+#signUp:checked ~ .content .signUpContent{
+    display: block;
+}
+
+.input_credentials{
+    color: #8992A1;
+    background-color: #F5F5F5;
+    width: 200px;
+    font-size: 14px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    margin: 5px;
+}
+
+.submit_button{
+    color: #F5F5F5;
+    width: 90px;
+    height: 27px;
+    margin: 10px 20px;
+    background-color: #FE0050;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px rgba(246, 45, 81, 0.09);
+}

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "KYO Assist",
+  "version": "1.0.0",
+  "description": "Description of KYO Assistant extension.",
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "images/kyo.png",
+    "default_popup": "index.html"
+  }
+}
