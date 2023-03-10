@@ -3,19 +3,23 @@ const MODEL_ID = 'GPT-3';
 const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
 
+let sender_name="";
+
 document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
       let knownEmails = /mail\.google\.com|outlook\.live\.com|mail\.yahoo\.com/;
       let status = document.getElementById('status');
+      let name = document.getElementById('sender_name');
 
       if (knownEmails.test(currentUrl)) {
         console.log('This is an email website.');
         let message = getEmailContent(); 
         console.log(message);
         status.textContent = message;
-        status.classList.remove("warning_mesg");
+        name.textContent = sender_name;
+        status.classList.remove("warning_msg");
       } 
       else {
         status.textContent = 'This is not an email website!';
@@ -23,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-
+  
+  //get Sender Name
   function getEmailContent() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(tabs[0].id, {code: "document.querySelector('body').innerHTML"}, function(result) {
@@ -40,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
           /*let prompt = 'give me only the text of the email:\n';
           prompt += contentText;*/
           //console.log(contentText);
+          sender_name=document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].innerText;
           return g;
         });
     });
   }
-  
