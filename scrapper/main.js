@@ -2,14 +2,12 @@
 const MODEL_ID = 'GPT-3';
 const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
-
-let sender_name="";
-
+var sender_name
 document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
-      let knownEmails = /mail\.google\.com|outlook\.live\.com|mail\.yahoo\.com/;
+      let knownEmails = /mail\.google\.com\/mail\/u\/1\/#inbox\//;
       let status = document.getElementById('status');
       let name = document.getElementById('sender_name');
 
@@ -18,17 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
         let message = getEmailContent(); 
         console.log(message);
         status.textContent = message;
-        name.textContent = sender_name;
+        console.log(sender_name.textContent);
+        name.textContent = sender_name.textContent;
         status.classList.remove("warning_msg");
       } 
       else {
-        status.textContent = 'This is not an email website!';
+        status.textContent = 'Please Open an Email!';
         status.classList.add("warning_msg");
       }
     });
   });
   
-  //get Sender Name
   function getEmailContent() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(tabs[0].id, {code: "document.querySelector('body').innerHTML"}, function(result) {
@@ -45,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
           /*let prompt = 'give me only the text of the email:\n';
           prompt += contentText;*/
           //console.log(contentText);
-          sender_name=document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].innerText;
+          sender_name=document.getElementsByClassName('gmail_attr')[0].innerText;
+          //document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].innerText;
+          sender_name = sender_name.textContent;
           return g;
         });
     });
