@@ -15,11 +15,16 @@ app.get("/", function(req, res){
 });
 
 app.post("/signin", function (req,res) {
-    
+    const email = req.body.signin_email
+    const password = req.body.signin_password
+    /*Auth Function*/
 });
 
 app.post("/signup", function (req,res) {
-    
+    const fullname = req.body.signup_fullname
+    const email = req.body.signup_email
+    const password = req.body.signup_password
+    const password2 = req.body.signup_confirm
 });
 
 app.listen(3032, function() {
