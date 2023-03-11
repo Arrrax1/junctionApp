@@ -4,6 +4,9 @@ const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
 
 window.onload = function() {
+
+ 
+
   const token = localStorage.getItem('token');
   if(!token)
   {
@@ -13,8 +16,14 @@ window.onload = function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+
+
+
     document.querySelector('#generate_btn').onclick = suggestEmail;
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
+
+     
+      
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
       let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#inbox\//;
@@ -74,6 +83,18 @@ document.addEventListener('DOMContentLoaded', function() {
           resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.children[0].children[0].lastChild.src;
           //resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.childNodes[0].childNodes[0].childNodes[1].src;
           ihtml.innerHTML = resu[0];
+
+          // Check if session exists in local storage
+          const email = ihtml.innerText;
+          var session_id
+          const emailHash = btoa(email)
+          if(localStorage.getItem(emailHash) !== null){
+            session_id = localStorage.getItem(emailHash)
+            const oldResponse = JSON.parse(localStorage.getItem(session_id))
+            document.querySelector('#response_message').innerText = oldResponse[0]  ;
+          }
+
+          
           resolve(resu);
         });
     });
@@ -81,16 +102,40 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
+ 
   async function suggestEmail() {
-    const email = document.querySelector('#ihtml').innerText;
-    const response = await tokenPostRequest('/assist/suggestEmail', { email });
 
-    if(response.success)
-    {
-      document.querySelector('#response_message').innerText = response.data.message.trim();
-      const session_id = response.data.m_session.id;
+    const email = document.querySelector('#ihtml').innerText;
+  
+
+      const response = await tokenPostRequest('/assist/suggestEmail', { email } );
+      if(response.success)
+      {
+       
+        var session_id
+        const emailHash = btoa(email)
+        // hash const email , using md5 algo b64
+        // check if already exsits
+        // if YES , grab id , nsemiha session_id 
+        if(localStorage.getItem(emailHash) !== null){
+          session_id = localStorage.getItem(emailHash)
+          localStorage.removeItem(session_id)
+        }
+
+        document.querySelector('#response_message').innerText = response.data.message.trim();
+        session_id = response.data.m_session.id;
+        console.log( "session id " + session_id)
+        localStorage.setItem(emailHash, session_id);
+        localStorage.setItem(session_id, JSON.stringify([response.data.message.trim()]));
+
+        // save session id into local storage
+        // key => hash
+        // value => id
+        // save all msgs into local storage , KEY : session_id , VALUE : all msgs
+      }
+
     }
-  }
+
 
   /*function getEmailDetails() {
     return new Promise((resolve, reject) => {
