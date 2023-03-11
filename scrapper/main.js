@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let name_div = document.getElementById('sender_name');
       let date_div = document.getElementsByClassName('email_date')[0];
       let image_icon = document.getElementById('user_icon');
+      let search_bar = document.getElementById('search_bar');
 
       if (knownEmails.test(currentUrl)) {
         console.log('This is an email website.');
@@ -29,11 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
         status.classList.remove("warning_msg");
         status.classList.add("hidden");
         email_wrapper.classList.remove("hidden");
+        search_bar.classList.add("footer");
+        search_bar.classList.remove("hidden");
       } 
       else {
         status.classList.add("warning_msg");
         status.classList.remove("hidden");
         email_wrapper.classList.add("hidden");
+        search_bar.classList.add("hidden");
+        search_bar.classList.remove("footer");
       }
     });
   });
