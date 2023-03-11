@@ -89,9 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       document.querySelector('#response_message').innerText = response.data.message.trim();
       const session_id = response.data.m_session.id;
+      textToSpeech(response.data.message.trim());
     }
   }
 
+
+  function textToSpeech(message)
+  {
+    if ('speechSynthesis' in window) {
+  
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = message;
+      msg.lang = 'en-US';
+      msg.volume = 1;
+      msg.rate = 1;
+      msg.pitch = 1;
+      msg.voice = speechSynthesis.getVoices()[2];
+      speechSynthesis.speak(msg);
+      
+    } else {
+      console.log('The Web Speech API is not available in this browser.');
+    }
+  }
   /*function getEmailDetails() {
     return new Promise((resolve, reject) => {
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
