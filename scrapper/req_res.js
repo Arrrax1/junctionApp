@@ -1,7 +1,15 @@
-function copy_text() {
-    let element = document.getElementById('copy').parentElement.parentElement.children[0].innerText;
-    navigator.clipboard.writeText(element);
-}
+
+  window.addEventListener("click", () => {
+    const arrClass = document.querySelectorAll(".clipboard");
+    for (let i of arrClass) {
+    i.addEventListener("click", (e) => {  
+        let element = e.target.parentElement.parentElement.children[0].innerText;
+        navigator.clipboard.writeText(element);
+        }
+    )
+    }
+  })
+
 
 document.getElementById('copy').addEventListener('click', copy_text);
 

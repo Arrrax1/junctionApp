@@ -286,15 +286,16 @@ header{
 
 .side_btn,.generate_btn{
     color: #F5F5F5;
-    padding: 3px 20px;
+    padding: 10px 20px;
     background-color: #FE0050;
     border-radius: 15px;
     outline: none;
     border: none;
-    font-size: 20px;
-    width: 180px;
+    font-size: 18px;
+    width: 100%;
     cursor: pointer;
     margin-top: 7px;
+    font-weight: 700;
 }
 .response+div{
     width: fit-content;
