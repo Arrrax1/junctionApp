@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(response.success)
     {
-      document.querySelector('#response_message').innerText = response.data.trim();
+      document.querySelector('#response_message').innerText = response.data.message.trim();
+      const session_id = response.data.m_session.id;
     }
   }
 
