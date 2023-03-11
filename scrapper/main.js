@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#response_send_Btn').onclick = send;
     document.querySelector('#voice_Btn').onclick = ()=>{textToSpeech(null)};
     document.querySelector('#auto_voice').onchange = onVoiceOverSwitch;
+    document.querySelector('#clip').onclick = copy_text;
 
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
 
@@ -123,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
   function send() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.executeScript(tabs[0].id, {code: `document.querySelector('.ams.bkH').click();`}, ()=>{
-        chrome.tabs.executeScript(tabs[0].id, {code: `document.querySelector('.Am.aO9.Al.editable.LW-avf.tS-tW').innerHTML = '${document.getElementById("ihtml").innerText}';`});
+        const script = "document.querySelector('.Am.aO9.Al.editable.LW-avf.tS-tW').innerHTML = `" + document.getElementById('response_message').innerText + "`;";
+        chrome.tabs.executeScript(tabs[0].id, {code: script });
       });
     });
 
