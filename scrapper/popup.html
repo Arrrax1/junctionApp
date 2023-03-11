@@ -9,6 +9,7 @@
 
 <body>
   <div class="main_container">
+    <div class="whiteBg"></div>
     <div id="permission-popup" class="hidden">
 
     </div>
@@ -18,29 +19,52 @@
       <div class="emails_label">Email inbox</div>
     </header>
     <section class="main">
-      <h1>KYO Assistant extension</h1>
-      <p id="status">Email replies</p>
+      <div id="status">
+        <div>
+          <img src="images/Gmail.svg" alt="" class="gmail_logo">
+        </div>
+        <div>
+          <h1>Please open an email</h1>
+          <p>In gmail, open an email that you want to get a reply suggestion for it</p>
+        </div>
+      </div>
       <div id="email_content_wrapper">
         <div class="email_infos">
           <div class="email_sender">
-            <div class="sender_image">img</div>
+            <div class="sender_image"><img id="user_icon" src="images/Gmail.svg" alt=""></div>
             <div id="sender_name" class="sender_name">User</div>
           </div>
           <div class="email_date">2023</div>
         </div>
-        <div id="ihtml" class="email_content" ></div>
+        <div id="ihtml" class="email_content"></div>
         <div class="divider"></div>
-        <h3>Suggested reply : </h3>
-        <textarea type="text" placeholder="The response will show here once you click Generate" class="response" spellcheck="false"></textarea>
-        <div class="user_response">
-          <h3>Want me to generate another response ?</h3>
-          <input class="response_Btn" type="button" value="Yes">
-          <input class="response_Btn" type="button" value="No">
+        <div class="email_infos">
+          <div class="email_sender">
+            <div class="sender_image"><img src="images/kyo.svg" alt=""></div>
+            <div class="sender_name">Suggested reply :</div>
+          </div>
+        </div>
+        <div class="response">
+          <div class="response_message">Click "Generate" to get a response</div>
+          <div class="response_Btn">
+            <img src="images/clipboard.svg" alt="">
+            <input id="copy" type="button" value="" class="clipboard">
+          </div>
+        </div>
+        <br>
+        <h3>Want something different ?</h3>
+      </div>
+      <div class="footer">
+        <input type="text" class="edit_input" placeholder="''make it shorter'' or ''rephrase it'' or anything you'd like.">
+        <div class="send_Btn">
+          <img src="images/paper-airplane.svg" alt="">
+          <input id="send_query" type="button" value="" class="clipboard">
         </div>
       </div>
     </section>
   </div>
   <script src="./main.js"></script>
+  <script src="./req_res.js"></script>
 </body>
 
 </html>
