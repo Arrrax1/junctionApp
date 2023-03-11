@@ -1,22 +1,16 @@
-
-  window.addEventListener("click", () => {
-    const arrClass = document.querySelectorAll(".clipboard");
-    for (let i of arrClass) {
-    i.addEventListener("click", (e) => {  
-        let element = e.target.parentElement.parentElement.children[0].innerText;
-        navigator.clipboard.writeText(element);
-        }
-    )
-    }
-  })
-
+function copy_text() {
+    let element = document.querySelector('#response_message').innerText;
+    navigator.clipboard.writeText(element);
+}
 
 document.getElementById('copy').addEventListener('click', copy_text);
 
 async function call_api() {
     const email = document.querySelector('#ihtml').innerText;
     const emailHash = window.btoa(encodeURIComponent(email));
+    
     let query = document.getElementById('send_query').parentElement.parentElement.children[0].value;
+    document.getElementById('send_query').parentElement.parentElement.children[0].value = "";
 
     const session_id = localStorage.getItem(emailHash);
     const response = await tokenPostRequest('/assist/append', {
@@ -32,7 +26,7 @@ async function call_api() {
         messages.push(content);
         localStorage.setItem(session_id, JSON.stringify(messages));
 
-        document.getElementById('copy').parentElement.parentElement.children[0].innerText=content;
+        document.querySelector('#response_message').innerText=content;
     }
     //Fun
 }

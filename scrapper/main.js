@@ -117,12 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
  
-  var i = 0
   async function suggestEmail() {
 
     const email = document.querySelector('#ihtml').innerText;
   
-    i = i + 1
+
       const response = await tokenPostRequest('/assist/suggestEmail', { email } );
       if(response.success)
       {
@@ -137,29 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.removeItem(session_id)
         }
 
-        const responseField = document.querySelector('.responseField');
-        const textnode = `
-              <div class="divider"></div>
-                <div class="email_infos">
-                  <div class="email_sender">
-                    <div class="sender_image"><img src="images/kyo.svg" alt=""></div>
-                    <div class="sender_name">Suggested reply :</div>
-                  </div>
-                </div>
-                <div class="response">
-                  <div class="response_message" id="response_message${i}">Click "Generate" to get a response</div>
-        
-                  <div class="response_Btn">
-                    <img src="images/clipboard.svg" alt="">
-                    <input id="copy${i}" type="button" value="" class="clipboard">
-                  </div>
-                </div>
-        `
-        responseField.innerHTML = responseField.innerHTML + textnode;
-
- 
-
-        document.querySelector('#response_message'+i).innerText = response.data.message.trim();
+        document.querySelector('#response_message').innerText = response.data.message.trim();
         session_id = response.data.m_session.id;
         console.log( "session id " + session_id)
         localStorage.setItem(emailHash, session_id);
@@ -204,12 +181,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     })
   }*/
-
-  function call_api() {
-    let query = document.getElementById('send_query').parentElement.parentElement.children[0].value;
-    console.log(query);
-    //Fun
-    document.getElementById('copy').parentElement.parentElement.children[0].innerText="MESSAGE FROM API";
-}
-
-document.getElementById('send_query').addEventListener('click', call_api);
