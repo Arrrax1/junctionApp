@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!message) message = document.querySelector('#response_message').innerText;
     if ('speechSynthesis' in window) {
       let text = "Here's a suggestion to a reply for this email. ";
-      text += message + ". If you're satisfied with the reply, make sure to copy it and use it. Otherwise regenerate another one."
+      text += message + ". If you're satisfied with the reply, make sure to copy it or click the icon bellow to use it. Otherwise regenerate another one."
       const msg = new SpeechSynthesisUtterance();
       msg.text = text;
       msg.lang = 'en-US';
