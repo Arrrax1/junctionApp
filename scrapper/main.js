@@ -131,6 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
  
   async function suggestEmail() {
 
+    var our_button = document.querySelector('#generate_btn');
+    var our_svg = document.querySelector('#loader');
+    our_button.setAttribute('disabled', '');
+    our_svg.classList.remove('hidden');
+
+
     const email = document.querySelector('#ihtml').innerText;
 
       const response = await tokenPostRequest('/assist/suggestEmail', { email } );
@@ -163,7 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // value => id
         // save all msgs into local storage , KEY : session_id , VALUE : all msgs
       }
-
+      
+    our_button.removeAttribute('disabled', '');
+    our_svg.classList.add('hidden');
     }
 
     async function logout() {

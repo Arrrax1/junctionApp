@@ -293,6 +293,7 @@ header{
     cursor: default;
 }
 
+
 .side_btn,.generate_btn{
     color: #F5F5F5;
     padding: 7px 25px;
@@ -306,7 +307,20 @@ header{
     margin-top: 7px;
     font-weight: 700;
 }
-
+div.generate_btn{
+    padding: 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input.generate_btn{
+    margin: 0;
+    padding: 7px 8px;
+}
+.generate_btn+img{
+    padding: 7px 8px;
+    width: 25px;
+}
 
 .switch {
     display: inline-block;
