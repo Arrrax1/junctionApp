@@ -8,6 +8,14 @@ body{
     background-color: #fff;
     width: 750px;
     height: 520px;
+    background-image: url("../images/Header.svg");
+    background-repeat: no-repeat;
+}
+
+.Header{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .tab_radio{
@@ -29,12 +37,13 @@ body{
 
 .main{
     width: fit-content;
-    margin: 0 auto;
+    margin-top: 100px;
+    margin-left: 300px;
 }
 
 .nav_tabs{
     display: flex;
-    width: 250px;
+    width: 100%;
     align-items: center;
     margin: 20px auto;
 }
@@ -54,18 +63,24 @@ body{
 
 .slider{
     position: absolute;
-    width: 125px;
-    height: 33px;
-    border-bottom:3px solid #FE0050;
+    width: 150px;
+    height: 28px;
+    border-bottom:2px solid #FE0050;
     transition: all 0.3s ease;
 }
 
 #signUp:checked ~ nav .slider{
-    margin-left: 125px;
+    margin-left: 150px;
 }
 #signIn:checked ~ nav #SignInLabel,
 #signUp:checked ~ nav #SignUpLabel{
     color: #FE0050;
+}
+
+#SignInLabel p,
+#SignUpLabel p{
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .content{
@@ -78,7 +93,8 @@ body{
 
 .signInContent,.signUpContent{
     display: none;
-    width: 80% ;
+    width: 100% ;
+
 }
 
 #signIn:checked ~ .content .signInContent,
@@ -87,27 +103,37 @@ body{
 }
 
 .input_credentials{
-    color: #8992A1;
     background-color: #F5F5F5;
-    width: 200px;
     font-size: 14px;
-    padding: 10px 15px;
+    padding: 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     outline: none;
-    margin: 5px;
+   
 }
 
 .submit_button{
     color: #F5F5F5;
-    width: 90px;
-    height: 27px;
-    margin: 10px 20px;
+    padding: 15px;
     background-color: #FE0050;
-    border-radius: 5px;
+    border-radius: 15px;
     outline: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0px 5px 5px rgba(246, 45, 81, 0.09);
+    margin-top: 10px;
+}
+
+#signin_btn, select, textarea{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+    
 }
