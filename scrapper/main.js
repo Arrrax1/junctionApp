@@ -12,6 +12,9 @@ window.onload = function() {
   {
     location.replace("../index.html");
   }
+
+  const username = localStorage.getItem('username');
+  document.querySelector('#username').innerText = username;
 }
 
 
@@ -20,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     document.querySelector('#generate_btn').onclick = suggestEmail;
+    document.querySelector('#logout_btn').onclick = logout;
+    document.querySelector('#response_send_Btn').onclick = send;
+
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
 
      
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
           ihtml.innerHTML = resu[0];
           //resu[0] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
           resu[0] = document.querySelectorAll('div.ii>div>div:not(.gmail_quote)')[0].innerText;
-          console.log(resu[0]);
+
           resu[1] = document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].parentNode.innerText;
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;
           resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.children[0].children[0].lastChild.src;
@@ -102,6 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
+  function send() {
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {code: `document.querySelector('.ams.bkH').click();`}, ()=>{
+        chrome.tabs.executeScript(tabs[0].id, {code: `document.querySelector('.Am.aO9.Al.editable.LW-avf.tS-tW').innerHTML = '${document.getElementById("ihtml").innerText}';`});
+      });
+    });
+  }
  
   async function suggestEmail() {
 
@@ -136,6 +150,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
+    async function logout() {
+      try {
+        const response = await tokenGetRequest('/auth/logout');
+      }catch(err)
+      {
+
+      }finally{
+        localStorage.removeItem('token');
+        location.reload();
+      }
+      
+    }
 
   /*function getEmailDetails() {
     return new Promise((resolve, reject) => {

@@ -173,7 +173,7 @@ header{
     width: fit-content;
     padding: auto;
 }
-.response_Btn,.send_Btn{
+.response_Btn,.send_Btn,.response_send_Btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,6 +190,10 @@ header{
 }
 .response_Btn:active{
     background-color: #1c9b2b;
+}
+.btn_prnt {
+    display: flex;
+    justify-self: end;
 }
 
 .send_Btn{
