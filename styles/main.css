@@ -7,9 +7,34 @@
 body{
     background-color: #fff;
     width: 750px;
-    height: 520px;
+    height: 500px;
     background-image: url("../images/Header.svg");
     background-repeat: no-repeat;
+}
+
+.fake_body{
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 801px;
+    height: 601px;
+    background-color: #F62D51;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.fake_body_opacity{
+    opacity: 0;
+}
+.fake_body_index{
+    z-index: -15;
+}
+.splash_screen_wrapper{
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .Header{
