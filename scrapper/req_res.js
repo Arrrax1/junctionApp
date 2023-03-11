@@ -1,15 +1,34 @@
 function copy_text() {
-    let element = document.getElementById('copy').parentElement.parentElement.children[0].innerText;
+    let element = document.querySelector('#response_message').innerText;
     navigator.clipboard.writeText(element);
 }
 
 document.getElementById('copy').addEventListener('click', copy_text);
 
-function call_api() {
+async function call_api() {
+    const email = document.querySelector('#ihtml').innerText;
+    const emailHash = window.btoa(encodeURIComponent(email));
+    
     let query = document.getElementById('send_query').parentElement.parentElement.children[0].value;
-    console.log(query);
+    document.getElementById('send_query').parentElement.parentElement.children[0].value = "";
+
+    const session_id = localStorage.getItem(emailHash);
+    const response = await tokenPostRequest('/assist/append', {
+        message: query,
+        session_id: session_id
+    });
+
+    if(response.success)
+    {
+        const messages = JSON.parse(localStorage.getItem(session_id));
+        const content = response.data.message;
+
+        messages.push(content);
+        localStorage.setItem(session_id, JSON.stringify(messages));
+
+        document.querySelector('#response_message').innerText=content;
+    }
     //Fun
-    document.getElementById('copy').parentElement.parentElement.children[0].innerText="MESSAGE FROM API";
 }
 
 document.getElementById('send_query').addEventListener('click', call_api);

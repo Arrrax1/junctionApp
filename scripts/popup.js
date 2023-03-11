@@ -27,6 +27,8 @@ async function signIn() {
     const response = await postRequest('/auth/login', { email, password });
     if(response.success){
       const token = "Bearer" + response.authorization.token;
+      const username = response.user.username;
+      localStorage.setItem('username', username);
       localStorage.setItem('token', token);
       location.replace("scrapper/popup.html");
     } 
