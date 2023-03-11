@@ -12,22 +12,39 @@ function switch_tabs() {
 
 document.getElementById('tab_switch').addEventListener('click', switch_tabs);
 
-
-function signIn() {
-    const email = document.getElementById("loginEmail").value
-    const password = document.getElementById("loginPassword").value
-    /*if Authenticated*/
-    location.replace("scrapper/popup.html")
-    console.log(email+password);
+window.onload = function() {
+  const token = localStorage.getItem('token');
+  if(!!token)
+  {
+    location.replace("scrapper/popup.html");
+  }
 }
 
-function signUp() {
+async function signIn() {
+    const email = document.getElementById("loginEmail").value
+    const password = document.getElementById("loginPassword").value
+
+    const response = await postRequest('/auth/login', { email, password });
+    if(response.success){
+      const token = response.authorization.token;
+      localStorage.setItem('token', token);
+      location.replace("scrapper/popup.html");
+    } 
+}
+
+async function signUp() {
     const username = document.getElementById("signUpUsername").value
     const email = document.getElementById("signUpEmail").value
-    const password = document.getElementById("signUpPasword").value
-    const p_confirm = document.getElementById("signUpPaswordConfirm").value
+    const password = document.getElementById("signUpPassword").value
+    const password_confirmation = document.getElementById("signUpPasswordConfirm").value
 
-    console.log(username,email,password,p_confirm);
+    const response = await postRequest('/auth/register', { username, email, password, password_confirmation });
+
+    if(response.success){
+      const token = response.authorization.token;
+      localStorage.setItem('token', token);
+      location.replace("scrapper/popup.html");
+    } 
 }
 
 document.getElementById('signin_btn').addEventListener('click', signIn);
