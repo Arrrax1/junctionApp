@@ -4,6 +4,7 @@ const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#generate_btn').onclick = suggestEmail;
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
@@ -68,6 +69,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     })
+  }
+
+
+  async function suggestEmail() {
+    const email = document.querySelector('#ihtml').innerText;
+    const response = await tokenPostRequest('/assist/suggestEmail', { email });
+
+    if(response.success)
+    {
+      document.querySelector('#response_message').innerText = response.data.trim();
+    }
   }
 
   /*function getEmailDetails() {

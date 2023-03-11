@@ -1,8 +1,8 @@
-const URL = "https://cf9e-105-109-192-130.eu.ngrok.io/api"
+const URL = "https://bb3a-105-109-192-130.eu.ngrok.io/api"
 
 const getTokenHeader = async () => {
     try {
-        const token = await AsyncStorage.getItem("token")
+        const token = localStorage.getItem("token")
 
         return {"Authorization": token }
     } catch (err) {

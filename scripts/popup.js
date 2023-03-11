@@ -26,7 +26,7 @@ async function signIn() {
 
     const response = await postRequest('/auth/login', { email, password });
     if(response.success){
-      const token = response.authorization.token;
+      const token = "Bearer" + response.authorization.token;
       localStorage.setItem('token', token);
       location.replace("scrapper/popup.html");
     } 
@@ -41,7 +41,7 @@ async function signUp() {
     const response = await postRequest('/auth/register', { username, email, password, password_confirmation });
 
     if(response.success){
-      const token = response.authorization.token;
+      const token = "Bearer" + response.authorization.token;
       localStorage.setItem('token', token);
       location.replace("scrapper/popup.html");
     } 
