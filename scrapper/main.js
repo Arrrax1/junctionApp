@@ -97,14 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
   function textToSpeech(message)
   {
     if ('speechSynthesis' in window) {
-  
+      let text = "Here's a suggestion to a reply for this email. ";
+      text += message + ". If you're satisfied with the reply, make sure to copy it and use it. Otherwise regenerate another one."
       const msg = new SpeechSynthesisUtterance();
-      msg.text = message;
+      msg.text = text;
       msg.lang = 'en-US';
       msg.volume = 1;
-      msg.rate = 1;
-      msg.pitch = 1;
-      msg.voice = speechSynthesis.getVoices()[2];
+      msg.rate = 1.5;
+      msg.pitch = 1.5;
+      msg.voice = speechSynthesis.getVoices()[0];
       speechSynthesis.speak(msg);
       
     } else {
