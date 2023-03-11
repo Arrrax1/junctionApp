@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log( "session id " + session_id)
         localStorage.setItem(emailHash, session_id);
         localStorage.setItem(session_id, JSON.stringify([data]));
-        textToSpeech(data);
+        //textToSpeech(data);
 
         // save session id into local storage
         // key => hash
