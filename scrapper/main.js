@@ -3,9 +3,19 @@ const MODEL_ID = 'GPT-3';
 const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
 
-window.onload = function() {
+var config;
 
- 
+window.onload = async function() {
+
+  const res = await tokenGetRequest('/auth/self');
+
+  if(res.success)
+  {
+    config = {
+      auto_voice_over: res.data.auto_voice_over
+    };
+    document.querySelector('#auto_voice').checked = res.data.auto_voice_over;
+  }
 
   const token = localStorage.getItem('token');
   if(!token)
@@ -26,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#logout_btn').onclick = logout;
     document.querySelector('#response_send_Btn').onclick = send;
     document.querySelector('#voice_Btn').onclick = ()=>{textToSpeech(null)};
+    document.querySelector('#auto_voice').onchange = onVoiceOverSwitch;
 
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
 
@@ -142,7 +153,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log( "session id " + session_id)
         localStorage.setItem(emailHash, session_id);
         localStorage.setItem(session_id, JSON.stringify([data]));
-        //textToSpeech(data);
+
+        if(config.auto_voice_over){
+          textToSpeech(data);
+        }
 
         // save session id into local storage
         // key => hash
@@ -154,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function logout() {
       try {
-        const response = await tokenGetRequest('/auth/logout');
+        await tokenGetRequest('/auth/logout');
       }catch(err)
       {
 
@@ -183,6 +197,22 @@ document.addEventListener('DOMContentLoaded', function() {
       
     } else {
       console.log('The Web Speech API is not available in this browser.');
+    }
+  }
+
+  async function onVoiceOverSwitch(e) {
+    const checked = document.querySelector('#auto_voice').checked;
+    try{
+      const res = await tokenPutRequest('/auth/config', { auto_voice_over: checked});
+      if(!res.success)
+      {
+        document.querySelector('#auto_voice').checked = !checked;
+      }
+    }catch(err)
+    {
+      console.log(err);
+    }finally{
+      config.auto_voice_over = checked;
     }
   }
   /*function getEmailDetails() {
