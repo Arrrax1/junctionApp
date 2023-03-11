@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // Check if session exists in local storage
           const email = ihtml.innerText;
           var session_id
-          const emailHash = btoa(email)
+          const emailHash = window.btoa(encodeURIComponent(email));
           if(localStorage.getItem(emailHash) !== null){
             session_id = localStorage.getItem(emailHash)
             const oldResponse = JSON.parse(localStorage.getItem(session_id))
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
       {
        
         var session_id
-        const emailHash = btoa(email)
+        const emailHash = window.btoa(encodeURIComponent(email));
         // hash const email , using md5 algo b64
         // check if already exsits
         // if YES , grab id , nsemiha session_id 
