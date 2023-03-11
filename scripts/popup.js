@@ -55,8 +55,8 @@ document.getElementById('signup_btn').addEventListener('click', signUp);
 
 if(navigator.onLine) {
   let f_body = document.getElementById('fake_body')
-  setTimeout(() => {  f_body.classList.add('fake_body_opacity'); }, 3000);
-  setTimeout(() => {  f_body.classList.add('fake_body_index'); }, 3000);
+  setTimeout(() => {  f_body.classList.add('fake_body_opacity'); }, 2000);
+  setTimeout(() => {  f_body.classList.add('fake_body_index'); }, 2000);
 } else {
   document.getElementById('fake_body').innerHTML = '<h1 style="color:white">No internet :/</h1><h3 style="color:white">please check you connection!</h3>'
 }

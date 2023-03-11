@@ -20,7 +20,7 @@ body{
     width: 801px;
     height: 601px;
     background-color: #F62D51;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
     z-index: 10;
 }
 .fake_body_opacity{

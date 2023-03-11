@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
           const ihtml = document.getElementById('ihtml');
           //ihtml.innerHTML = contentText;
           ihtml.innerHTML = resu[0];
-          resu[0] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
+          //resu[0] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
+          resu[0] = document.querySelectorAll('div.ii>div>div:not(.gmail_quote)')[0].innerText;
           console.log(resu[0]);
           resu[1] = document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].parentNode.innerText;
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;
