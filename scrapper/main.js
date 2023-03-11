@@ -3,6 +3,15 @@ const MODEL_ID = 'GPT-3';
 const maxTokens = 50;
 const url = `https://api.openai.com/v1/engines/${MODEL_ID}/completions`;*/
 
+window.onload = function() {
+  const token = localStorage.getItem('token');
+  if(!token)
+  {
+    location.replace("../index.html");
+  }
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#generate_btn').onclick = suggestEmail;
     chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {

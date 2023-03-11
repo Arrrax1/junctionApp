@@ -40,11 +40,12 @@ async function getRequest(endPoint, headers = {}) {
                 "accept": "application/json",
             }
         })
-        return res.json()
+        return handleCodeStatus(res);
     } catch (err) {
 
     }
 }
+
 async function postRequest(endPoint, body, headers = {}) {
     try {
         const res = await fetch(URL + endPoint, {
@@ -56,8 +57,20 @@ async function postRequest(endPoint, body, headers = {}) {
                 "accept": "application/json",
             }
         })
-        return res.json()
+        return handleCodeStatus(res);
     } catch (err) {
 
     }
+}
+
+function handleCodeStatus(response) {
+    switch(response.status)
+    {
+        case 401:
+            localStorage.removeItem('token');
+            location.reload();
+        case 200:
+            return response.json();
+    }
+
 }
