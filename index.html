@@ -9,44 +9,31 @@
     <title>KYO Assist</title>
 </head>
 <body>
-    <div class="title"><img src="images/kyo32.ico" alt="">YO Assist</div>
     <section class="main">
         <input class="tab_radio" type="radio" id="signIn" name="tab" checked>
         <input class="tab_radio" type="radio" id="signUp" name="tab">
         <h2 id="welcome_message">Welcome Back!</h2>
         <p id="welcome_description">Please enter your informations</p>
         <nav class="nav_tabs" id="tab_switch">
-            <label id="SignInLabel" for="signIn" class="tab_item">Sign In</label>
-            <label id="SignUpLabel" for="signUp" class="tab_item">Sign Up</label>
+            <label id="SignInLabel" for="signIn" class="tab_item"> <p>Login</p></label>
+            <label id="SignUpLabel" for="signUp" class="tab_item"> <p>Sign up</p></label>
             <div class="slider"></div>
         </nav>
         <div class="content">
             <div class="signInContent">
                 <form action="/" method="post">
-                    <div>
-                        <input id="loginEmail" class="input_credentials" type="email" placeholder="Email">
-                    </div>
-                    <div>
-                        <input id="loginPassword" class="input_credentials" type="password" placeholder="Password">
-                    </div>
-                    <input id="signin_btn" type="button" value="Login" class="submit_button">
+                        <input id="loginEmail" class="input_credentials" type="email" placeholder="Email">                    
+                        <input id="loginPassword" class="input_credentials" type="password" placeholder="Password">              
+                        <input id="signin_btn" type="button" value="Continue" class="submit_button">
                 </form>
             </div>
             <div class="signUpContent">
-                <form action="/" method="post">
-                    <div>
-                        <input id="signUpUsername" class="input_credentials" type="text" placeholder="Full name">
-                    </div>
-                    <div>
-                        <input id="signUpEmail" class="input_credentials" type="email" placeholder="Email">
-                    </div>
-                    <div>
+                <form action="/" method="post">                   
+                        <input id="signUpUsername" class="input_credentials" type="text" placeholder="Full name">                  
+                        <input id="signUpEmail" class="input_credentials" type="email" placeholder="Email">       
                         <input id="signUpPassword" class="input_credentials" type="password" placeholder="Password">
-                    </div>
-                    <div>
-                        <input id="signUpPaswordConfirm" class="input_credentials" type="password" placeholder="Confirm password">
-                    </div>
-                    <input id="signup_btn" type="button" value="Register" class="submit_button">
+                        <input id="signUpPaswordConfirm" class="input_credentials" type="password" placeholder="Confirm password">          
+                        <input id="signup_btn" type="button" value="Continue" class="submit_button">
                 </form>
             </div>
         </div>

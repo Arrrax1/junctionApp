@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
-      let knownEmails = /mail\.google\.com\/mail\/u\/1\/#inbox\//;
+      let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#inbox\//;
       let status = document.getElementById('status');
       let name = document.getElementById('sender_name');
 
