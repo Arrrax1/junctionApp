@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
-      let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#[a-zA-Z]*\//;
+      let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#(((?!search)[a-zA-Z])*|search\/[a-zA-Z]*)\//;
       let status = document.getElementById('status');
       let email_wrapper = document.getElementById('email_content_wrapper');
       let name_div = document.getElementById('sender_name');
