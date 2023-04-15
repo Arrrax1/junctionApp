@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       let currentTab = tabs[0];
       let currentUrl = currentTab.url;
-      let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#inbox\//;
+      let knownEmails = /mail\.google\.com\/mail\/u\/[0-9]\/#[a-zA-Z]*\//;
       let status = document.getElementById('status');
       let email_wrapper = document.getElementById('email_content_wrapper');
       let name_div = document.getElementById('sender_name');
@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
           //ihtml.innerHTML = contentText;
           ihtml.innerHTML = resu[0];
           //resu[0] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
-          resu[0] = document.querySelectorAll('div.ii>div>div:not(.gmail_quote)')[0].innerText;
+          // resu[0] = document.querySelectorAll('div.ii>div>div:not(.gmail_quote)')[0].innerText;
+          resu[0] = document.querySelectorAll(".a3s.aiL:not(.gmail_quote)")[document.querySelectorAll(".a3s.aiL:not(.gmail_quote)").length-2].innerText;
 
           resu[1] = document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].parentNode.innerText;
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;

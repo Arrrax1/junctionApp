@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "KYO Assistant extension",
+  "name": "PenTec Assistant extension",
   "version": "1.0.0",
-  "description": "Description of KYO Assistant extension.",
+  "description": "Description of PenTec Assistant extension.",
   "permissions": [
     "activeTab",
     "tabs"
   ],
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "PenTec.png",
     "default_popup": "popup.html"
   }
 }

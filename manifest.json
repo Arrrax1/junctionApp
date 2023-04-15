@@ -8,13 +8,13 @@
     "tabs"
   ],
   "icons":{
-    "16":"images/kyo.png",
-    "32":"images/kyo.png",
-    "48":"images/kyo.png",
-    "128":"images/kyo.png"
+    "16":"images/PenTec.png",
+    "32":"images/PenTec.png",
+    "48":"images/PenTec.png",
+    "128":"images/PenTec.png"
   },
   "browser_action": {
-    "default_icon": "images/kyo.png",
+    "default_icon": "images/PenTec.png",
     "default_popup": "index.html"
   }
 }
