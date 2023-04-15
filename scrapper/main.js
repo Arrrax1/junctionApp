@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+
+  let sender = null;
   function getEmailContent() {
     return new Promise((resolve, reject) => {
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -123,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;
           resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.children[0].children[0].lastChild.src;
           //resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.childNodes[0].childNodes[0].childNodes[1].src;
-          ihtml.innerHTML = `email from: ${resu[1]}, email content: ${resu[0]}`;
-
+          ihtml.innerHTML = resu[0];
+          sender = resu[1];
           // Check if session exists in local storage
           const email = ihtml.innerText;
           var session_id
@@ -163,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = document.querySelector('#ihtml').innerText;
 
-      const response = await tokenPostRequest('/assist/suggestEmail', { email } );
+      const response = await tokenPostRequest('/assist/suggestEmail', { email: `email sender: ${sender}, email content: ${email}`} );
       if(response.success)
       {
        

@@ -1,4 +1,4 @@
-const URL = "http://pentec.reepoo.site/api"
+const URL = "https://pentec.reepoo.site/api"
 
 const getTokenHeader = async () => {
     try {
