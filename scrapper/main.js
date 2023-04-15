@@ -81,6 +81,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  function removeGmailQuote(te) {
+    Array.from(te.children).forEach(child => {
+      if(Array.from(child.classList).includes("gmail_quote"))
+      {
+        te.removeChild(child);
+        return;
+      } 
+      if(child.childElementCount > 0) {
+        removeGmailQuote(child);
+      }
+    });
+  }
   
   function getEmailContent() {
     return new Promise((resolve, reject) => {
@@ -96,7 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
           ihtml.innerHTML = resu[0];
           //resu[0] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].children[2].getElementsByClassName('ii')[0].innerText;
           // resu[0] = document.querySelectorAll('div.ii>div>div:not(.gmail_quote)')[0].innerText;
-          resu[0] = document.querySelectorAll(".a3s.aiL:not(.gmail_quote)")[document.querySelectorAll(".a3s.aiL:not(.gmail_quote)").length-2].innerText;
+          // document.querySelectorAll(".a3s.aiL>*:not(.gmail_quote)");
+          
+          // resu[0] = document.querySelectorAll(".a3s.aiL:not(.gmail_quote)")[document.querySelectorAll(".a3s.aiL:not(.gmail_quote)").length-2].innerText;
+          const elements = document.querySelectorAll(".a3s.aiL");
+          const targetElement = elements[elements.length-2];
+
+          
+          removeGmailQuote(targetElement);
+
+          resu[0] = targetElement.innerText;
 
           resu[1] = document.getElementsByClassName('gD')[document.getElementsByClassName('gD').length-1].parentNode.innerText;
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;
