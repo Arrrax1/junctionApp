@@ -8,13 +8,13 @@
     "tabs"
   ],
   "icons":{
-    "16":"images/PenTec.png",
-    "32":"images/PenTec.png",
-    "48":"images/PenTec.png",
-    "128":"images/PenTec.png"
+    "16":"images/PentecAssistant.png",
+    "32":"images/PentecAssistant.png",
+    "48":"images/PentecAssistant.png",
+    "128":"images/PentecAssistant.png"
   },
   "browser_action": {
-    "default_icon": "images/PenTec.png",
+    "default_icon": "images/PentecAssistant.png",
     "default_popup": "index.html"
   }
 }

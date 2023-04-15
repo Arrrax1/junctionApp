@@ -12,10 +12,9 @@
     color: #1D1D1E;
 }
 body{
-    background-color: var(--grey);
     width: 750px;
     height: 520px;
-    overflow-y: hidden;
+
 }
 
 header{
@@ -24,11 +23,18 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 5px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--grey);
+    box-shadow: 0px 3px 35px -10px rgba(0,0,0,0.2);
+
 }
+
 
 #email_content_wrapper{
     height: 90%;
-    overflow-y: scroll;
+    
 }
 .user_icon>img{
     width: 18px;
@@ -52,15 +58,18 @@ header{
     flex-direction: column;
     height: 100%;
 }
-.main{
+.master{
+   
     margin-top: 10px;
     /*border-radius: 45px 45px 0 0 ;
     */
-    padding: 25px;
     background-color: white;
     height: inherit;
     z-index: 3;
-    overflow-y: hidden;
+}
+.main{
+
+    padding: 20px;
     
 }
 .email_date{
@@ -193,9 +202,12 @@ header{
     border-radius: 50%;
     outline: none;
     border: none;
-    box-shadow: 0px 5px 5px rgba(246, 45, 81, 0.09);
+    box-shadow: 0px 6px 6px rgba(65, 45, 246, 0.15);
     justify-self: end;
     transition: background-color 0.2s ease;
+}
+input.generate_btn{
+    box-shadow: 0px 8px 8px rgba(65, 45, 246, 0.15);
 }
 .response_send_Btn:active,.voice_Btn:active,.response_Btn:active{
     background-color: #66cc72;
@@ -321,7 +333,7 @@ div.generate_btn{
 }
 input.generate_btn{
     margin: 0;
-    padding: 7px 8px;
+    padding: 10px 100px;
 }
 .generate_btn+img{
     padding: 7px 8px;

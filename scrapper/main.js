@@ -222,13 +222,12 @@ document.addEventListener('DOMContentLoaded', function() {
       text += message + ". If you're satisfied with the reply, make sure to copy it or click the icon bellow to use it. Otherwise regenerate another one."
       const msg = new SpeechSynthesisUtterance();
       msg.text = text;
-      msg.lang = 'en-US';
+      msg.lang = 'en-GB';
       msg.volume = 1;
-      msg.rate = 1.5;
-      msg.pitch = 1.5;
+      msg.rate = 1.0;
+      msg.pitch = 1.0;
       msg.voice = speechSynthesis.getVoices()[0];
-      speechSynthesis.speak(msg);
-      
+      speechSynthesis.speak(msg);      
     } else {
       console.log('The Web Speech API is not available in this browser.');
     }
