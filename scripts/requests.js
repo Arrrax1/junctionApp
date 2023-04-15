@@ -1,4 +1,4 @@
-const URL = "https://bb3a-105-109-192-130.eu.ngrok.io/api"
+const URL = "http://pentec.reepoo.site/api"
 
 const getTokenHeader = async () => {
     try {
