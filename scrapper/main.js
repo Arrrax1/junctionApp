@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
           resu[2] = document.getElementsByClassName('gK')[document.getElementsByClassName('gK').length-1].innerText;
           resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.children[0].children[0].lastChild.src;
           //resu[4] = document.getElementsByClassName('gs')[document.getElementsByClassName('gs').length-1].parentNode.childNodes[0].childNodes[0].childNodes[1].src;
-          ihtml.innerHTML = resu[0];
+          ihtml.innerHTML = `email from: ${resu[1]}, email content: ${resu[0]}`;
 
           // Check if session exists in local storage
           const email = ihtml.innerText;
