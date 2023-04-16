@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var our_svg = document.querySelector('#loader');
     our_button.setAttribute('disabled', '');
     our_svg.classList.remove('hidden');
+    our_button.style.setProperty("padding-right","0");
 
 
     const email = document.querySelector('#ihtml').innerText;
@@ -198,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     our_button.removeAttribute('disabled', '');
     our_svg.classList.add('hidden');
+    our_button.style.setProperty("padding-right","40px");
     }
 
     async function logout() {

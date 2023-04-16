@@ -7,8 +7,14 @@
     "activeTab",
     "tabs"
   ],
+  "icons":{
+    "16":"PenTec.png",
+    "32":"PenTec.png",
+    "48":"PenTec.png",
+    "128":"PenTec.png"
+  },
   "browser_action": {
-    "default_icon": "PentecAssistant.png",
+    "default_icon": "PenTec.png",
     "default_popup": "popup.html"
   }
 }
